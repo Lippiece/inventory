@@ -1,0 +1,47 @@
+{
+  "name": "server",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun --watch src/index.ts"
+  },
+  "dependencies": {
+    "bcryptjs": "latest",
+    "compression": "latest",
+    "cors": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "express-async-errors": "latest",
+    "express-validator": "latest",
+    "helmet": "latest",
+    "inserturlparams": "latest",
+    "jet-logger": "latest",
+    "jet-paths": "latest",
+    "jet-validator": "latest",
+    "jsonfile": "latest",
+    "jsonwebtoken": "latest",
+    "module-alias": "latest",
+    "mongoose": "latest",
+    "morgan": "latest",
+    "portfinder": "^1.0.32",
+    "ts-command-line-args": "latest"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/bcryptjs": "latest",
+    "@types/cookie-parser": "latest",
+    "@types/cors": "latest",
+    "@types/express": "latest",
+    "@types/find": "latest",
+    "@types/fs-extra": "latest",
+    "@types/jsonfile": "latest",
+    "@types/jsonwebtoken": "latest",
+    "@types/node": "latest",
+    "@types/supertest": "latest",
+    "concurrently": "latest",
+    "fs-extra": "latest",
+    "supertest": "latest",
+    "typescript": "latest",
+    "vitest": "latest"
+  }
+}
