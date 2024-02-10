@@ -27,8 +27,8 @@
     "ts-command-line-args": "latest"
   },
   "devDependencies": {
-    "@types/bun": "latest",
     "@types/bcryptjs": "latest",
+    "@types/bun": "latest",
     "@types/cookie-parser": "latest",
     "@types/cors": "latest",
     "@types/express": "latest",
