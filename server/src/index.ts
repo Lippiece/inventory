@@ -3,8 +3,8 @@ import "./pre-start"
 import logger from "jet-logger"
 import { getPort, setBasePort } from "portfinder"
 
-import EnvironmentVariables from "./constants/envVars"
-import app from "./server"
+import EnvironmentVariables from "./constants/envVars.ts"
+import app from "./server.ts"
 
 // **** Run **** //
 

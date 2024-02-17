@@ -1,57 +1,40 @@
 import jetPaths from "jet-paths"
 
-const idDelete = "/:id/delete"
-const idUpdate = "/:id/update"
-const id = "/:id"
-const idAdd = "/add"
-const paths = {
+const template = {
+  all     : "/all",
+  id      : "/:id",
+  idAdd   : "/add",
+  idDelete: "/:id/delete",
+  idUpdate: "/:id/update",
+}
+const paths    = {
   Base: "/api",
 
   health: "/health",
 
   lesson: {
-    add: idAdd,
-    Base: "/lesson",
-    delete: idDelete,
-    get: id,
-    update: idUpdate,
-    lessons: "s",
+    Base: "/lessons",
+    ...template,
   },
 
   service: {
-    add: idAdd,
-    Base: "/service",
-    delete: idDelete,
-    get: id,
-    update: idUpdate,
-    services: "s",
+    Base: "/services",
+    ...template,
   },
 
   student: {
-    add: idAdd,
-    Base: "/student",
-    delete: idDelete,
-    get: id,
-    update: idUpdate,
-    students: "s",
+    Base: "/students",
+    ...template,
   },
 
   subscription: {
-    add: idAdd,
-    Base: "/subscription",
-    delete: idDelete,
-    get: id,
-    update: idUpdate,
-    subscriptions: "s",
+    Base: "/subscriptions",
+    ...template,
   },
 
   teacher: {
-    add: idAdd,
-    Base: "/teacher",
-    delete: idDelete,
-    get: id,
-    update: idUpdate,
-    teachers: "s",
+    Base: "/teachers",
+    ...template,
   },
 }
 

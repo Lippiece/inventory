@@ -20,11 +20,19 @@ const args = parse({
     defaultValue: "development",
     type: String,
   },
+  watch: {
+    alias: "w",
+    defaultValue: false,
+    type: Boolean,
+  },
 })
 
 // Set the env file
 const dotenvConfig = config({
-  path: path.join(dirname(fileURLToPath(import.meta.url)), `../../env/.env.${args.env}`),
+  path: path.join(
+    dirname(fileURLToPath(import.meta.url)),
+    `../../env/.env.${args.env}`,
+  ),
 })
 
 if (dotenvConfig.error) {

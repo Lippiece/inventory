@@ -1,21 +1,15 @@
 import { Router } from "express"
-import HttpStatusCodes from "src/constants/HttpStatusCodes"
-import routes from "src/constants/paths"
+import { OK } from "http-status"
+
+import routes from "@/constants/routes.js"
 import {
-  taskAdd,
-  taskDelete,
-  taskGet,
-  taskGetAll,
-  tasksDeleteAll,
-  taskUpdate,
-} from "src/controllers/task"
-import {
-  taskListAdd,
-  taskListDelete,
-  taskListGet,
-  taskListGetAll,
-  taskListUpdate,
-} from "src/controllers/taskList"
+  lessonAdd,
+  lessonDelete,
+  lessonDeleteAll,
+  lessonGet,
+  lessonGetAll,
+  lessonUpdate,
+} from "@/controllers/lesson.js"
 
 const router = Router()
 
@@ -27,22 +21,15 @@ router.get("/", (_req, res) => {
 })
 
 router.get(routes.health, (_req, res) => {
-  res.sendStatus(HttpStatusCodes.OK)
+  res.sendStatus(OK)
 })
 
-// Tasks
-router.get(routes.tasks.Base, taskGetAll)
-router.delete(routes.tasks.deleteAll, tasksDeleteAll)
-router.get(routes.task.get, taskGet)
-router.post(routes.task.add, taskAdd)
-router.put(routes.task.update, taskUpdate as any)
-router.delete(routes.task.delete, taskDelete)
-
-// Task Lists
-router.get(routes.taskLists.Base, taskListGetAll)
-router.get(routes.taskList.get, taskListGet)
-router.post(routes.taskList.add, taskListAdd)
-router.put(routes.taskList.update, taskListUpdate)
-router.delete(routes.taskList.delete, taskListDelete)
+// Lessons
+router.get(routes.lesson.Base, lessonGetAll)
+router.get(routes.lesson.id, lessonGet)
+router.post(routes.lesson.idAdd, lessonAdd)
+router.put(routes.lesson.idUpdate, lessonUpdate)
+router.delete(routes.lesson.idDelete, lessonDelete)
+router.delete(routes.lesson.deleteAll, lessonDeleteAll)
 
 export default router
