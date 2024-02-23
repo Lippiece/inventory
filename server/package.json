@@ -3,45 +3,16 @@
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
-    "start": "bun --watch src/index.ts"
+    "start": "bun --hot src/index.ts"
   },
   "dependencies": {
-    "bcryptjs": "latest",
-    "compression": "latest",
-    "cors": "latest",
     "dotenv": "latest",
-    "express": "latest",
-    "express-async-errors": "latest",
-    "express-validator": "latest",
-    "helmet": "latest",
-    "inserturlparams": "latest",
-    "jet-logger": "latest",
-    "jet-paths": "latest",
-    "jet-validator": "latest",
-    "jsonfile": "latest",
-    "jsonwebtoken": "latest",
-    "module-alias": "latest",
-    "mongoose": "latest",
-    "morgan": "latest",
-    "portfinder": "^1.0.32",
-    "ts-command-line-args": "latest"
+    "hono": "latest",
+    "fp-ts": "^2.16.2",
+    "mongoose": "latest"
   },
   "devDependencies": {
-    "@types/bcryptjs": "latest",
-    "@types/bun": "latest",
-    "@types/cookie-parser": "latest",
-    "@types/cors": "latest",
-    "@types/express": "latest",
-    "@types/find": "latest",
-    "@types/fs-extra": "latest",
-    "@types/jsonfile": "latest",
-    "@types/jsonwebtoken": "latest",
-    "@types/node": "latest",
-    "@types/supertest": "latest",
-    "concurrently": "latest",
-    "fs-extra": "latest",
-    "supertest": "latest",
-    "typescript": "latest",
-    "vitest": "latest"
+    "@happy-dom/global-registrator": "^13.5.0",
+    "eslint-config-adjunct": "^4.13.0"
   }
 }

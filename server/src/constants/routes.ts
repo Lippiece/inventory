@@ -2,6 +2,7 @@ import jetPaths from "jet-paths"
 
 const template = {
   all     : "/all",
+  delete  : "/delete",
   id      : "/:id",
   idAdd   : "/add",
   idDelete: "/:id/delete",

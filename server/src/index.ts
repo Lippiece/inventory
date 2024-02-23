@@ -1,27 +1,33 @@
-import "./pre-start"
+import "./setup"
 
-import logger from "jet-logger"
-import { getPort, setBasePort } from "portfinder"
+import { Hono } from "hono"
+import { basicAuth } from "hono/basic-auth"
+import { logger } from "hono/logger"
 
-import EnvironmentVariables from "./constants/envVars.ts"
-import app from "./server.ts"
+import errorHandler from "./functions/errorHandler"
+import api from "./routes/api"
 
-// **** Run **** //
+const app = new Hono()
 
-setBasePort(EnvironmentVariables.Port)
-getPort(
-  {
-    port: EnvironmentVariables.Port,
-  },
-  (error, port) => {
-    const SERVER_START_MSG = `Express server started on port: ${port}`
-
-    if (error) {
-      throw error
-    }
-
-    app.listen(port, () => {
-      logger.info(SERVER_START_MSG)
-    })
-  },
+// Middleware
+app.use(logger())
+app.use(
+  "/auth/*",
+  basicAuth({
+    password: "acoolproject",
+    username: "hono",
+  }),
 )
+
+// Routes
+app
+  .get("/", context => context.redirect("/api"))
+  .get("/error", () => nonexistentthing)
+
+app.route("/api", api)
+
+// Error
+app.onError(errorHandler)
+
+export type AppT = typeof app
+export default app

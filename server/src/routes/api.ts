@@ -1,35 +1,17 @@
-import { Router } from "express"
-import { OK } from "http-status"
+import { Hono } from "hono"
 
-import routes from "@/constants/routes.js"
-import {
-  lessonAdd,
-  lessonDelete,
-  lessonDeleteAll,
-  lessonGet,
-  lessonGetAll,
-  lessonUpdate,
-} from "@/controllers/lesson.js"
+import lessons from "./lessons"
 
-const router = Router()
+const api = new Hono()
 
 // **** Routes **** //
 
 // Root
-router.get("/", (_req, res) => {
-  res.redirect(routes.health)
-})
-
-router.get(routes.health, (_req, res) => {
-  res.sendStatus(OK)
-})
+api
+  .get("/", context => context.redirect("/api/health"))
+  .get("/health", context => context.text("Everything works!"))
 
 // Lessons
-router.get(routes.lesson.Base, lessonGetAll)
-router.get(routes.lesson.id, lessonGet)
-router.post(routes.lesson.idAdd, lessonAdd)
-router.put(routes.lesson.idUpdate, lessonUpdate)
-router.delete(routes.lesson.idDelete, lessonDelete)
-router.delete(routes.lesson.deleteAll, lessonDeleteAll)
+api.route("/lessons", lessons)
 
-export default router
+export default api
