@@ -1,10 +1,11 @@
-import { model, Schema } from "mongoose"
+import { model, ObjectId, Schema, Types } from "mongoose"
 
 export interface ILesson {
   active     : boolean
   date       : Date
   description: string
   price      : number
+  service    : ObjectId
   title      : string
 }
 
@@ -13,6 +14,7 @@ const LessonSchema = new Schema<ILesson>({
   date       : { required: true, type: Date },
   description: { type: String },
   price      : { required: true, type: Number },
+  service    : { type: Types.ObjectId },
   title      : { required: true, type: String },
 })
 

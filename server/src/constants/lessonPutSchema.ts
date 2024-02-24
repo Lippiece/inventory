@@ -9,15 +9,17 @@ import {
   toMinValue,
 } from "valibot"
 
+const coerceDate   = (data: string) =>
+  new Date(data).getDay() ? new Date(data) : data
+const coerceNumber = (data: string) => (Number(data) ? Number(data) : data)
+
 const lessonPutSchema = object({
   active: optional(coerce(boolean(), (data: string) => data === "true")),
 
-  date: optional(
-    coerce(date([toMinValue(new Date())]), (data: string) => new Date(data)),
-  ),
+  date: optional(coerce(date([toMinValue(new Date())]), coerceDate)),
 
   description: optional(string()),
-  price      : optional(coerce(number(), Number)),
+  price      : optional(coerce(number(), coerceNumber)),
   title      : optional(string()),
 })
 
