@@ -1,8 +1,8 @@
 import { vValidator } from "@hono/valibot-validator"
 import { Hono } from "hono"
-import { HTTPException } from "hono/http-exception"
 
 import lessonAddSchema from "@/constants/lessonAddSchema"
+import lessonPutSchema from "@/constants/lessonPutSchema"
 import LessonJSX from "@/views/Lesson"
 import LessonsList from "@/views/LessonsList"
 
@@ -12,20 +12,20 @@ const lessons = new Hono()
 
 export const lessonsRoutes = lessons
   .get("/", async context => {
-    const lessons = await Lesson.find().exec()
+    const lessons = await Lesson.find()
 
     return await context.html(LessonsList(lessons))
   })
 
   .get("/:id", async context => {
     const id     = context.req.param("id")
-    const lesson = await Lesson.findById(id).exec()
+    const lesson = await Lesson.findById(id)
 
     if (lesson) {
       return await context.html(LessonJSX({ lesson }))
     }
 
-    throw new HTTPException(404, { message: "Lesson not found" })
+    return context.text("Lesson not found", 404)
   })
   .post(
     "/:id/add",
@@ -45,10 +45,32 @@ export const lessonsRoutes = lessons
   .delete("/:id/delete", async context => {
     const id = context.req.param("id")
 
-    await Lesson.findByIdAndDelete(id).exec()
+    await Lesson.findByIdAndDelete(id)
 
     return context.text("Lesson deleted")
-  }) // TODO: Delete one lesson
-  .put("/:id/update", context => context.text("Hello World!")) // TODO: Update one lesson
+  })
+  .put(
+    "/:id/update",
+    vValidator("form", lessonPutSchema, (result, context) => {
+      if (!result.success) {
+        return context.json(result.issues, 400)
+      }
+    }),
+    async context => {
+      const id     = context.req.param("id")
+      const form   = context.req.valid("form")
+      const lesson = await Lesson.findById(id)
+
+      if (lesson) {
+        await lesson.updateOne(form)
+
+        const newLesson = await Lesson.findById(id)
+
+        return await context.html(LessonJSX({ lesson: newLesson }))
+      }
+
+      return context.text(`Lesson ${id} not found`, 404)
+    },
+  )
 
 export default lessons
