@@ -1,6 +1,8 @@
+import { vValidator } from "@hono/valibot-validator"
 import { Hono } from "hono"
 import { HTTPException } from "hono/http-exception"
 
+import lessonAddSchema from "@/constants/lessonAddSchema"
 import LessonJSX from "@/views/Lesson"
 import LessonsList from "@/views/LessonsList"
 
@@ -25,7 +27,21 @@ export const lessonsRoutes = lessons
 
     throw new HTTPException(404, { message: "Lesson not found" })
   })
-  .post("/:id/add", context => context.text("Hello World!")) // TODO: Add one lesson
+  .post(
+    "/:id/add",
+    vValidator("form", lessonAddSchema, (result, context) => {
+      if (!result.success) {
+        return context.json(result.issues, 400)
+      }
+    }),
+    async context => {
+      const lesson = new Lesson(context.req.valid("form"))
+
+      await lesson.save()
+
+      return await context.html(LessonJSX({ lesson }))
+    },
+  ) // TODO: Add one lesson
   .put("/:id/update", context => context.text("Hello World!")) // TODO: Update one lesson
   .delete("/:id/delete", context => context.text("Hello World!")) // TODO: Delete one lesson
 

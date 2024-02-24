@@ -6,10 +6,12 @@
     "start": "bun --hot src/index.ts"
   },
   "dependencies": {
+    "@hono/valibot-validator": "^0.2.2",
     "dotenv": "latest",
-    "hono": "latest",
     "fp-ts": "^2.16.2",
-    "mongoose": "latest"
+    "hono": "latest",
+    "mongoose": "latest",
+    "valibot": "^0.29.0"
   },
   "devDependencies": {
     "@happy-dom/global-registrator": "^13.5.0",
