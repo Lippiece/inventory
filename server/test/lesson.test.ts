@@ -62,7 +62,13 @@ describe("lesson controllers", () => {
       expect(text).toBe(LessonJSX({ lesson: newLesson }).toString())
     }, 1000)
 
-    it.skip("lesson DELETE should delete a lesson", async () => {}, 1000)
+    it("lesson DELETE should delete a lesson", async () => {
+      const response = await client[`${lessons[0].id}/delete`].$delete()
+      const text = await response.text()
+
+      expect(response.status).toBe(200)
+      expect(text).toBe("Lesson deleted")
+    }, 1000)
 
     it.skip("lesson PUT should update a lesson", async () => {}, 1000)
 

@@ -41,8 +41,14 @@ export const lessonsRoutes = lessons
 
       return await context.html(LessonJSX({ lesson }))
     },
-  ) // TODO: Add one lesson
+  )
+  .delete("/:id/delete", async context => {
+    const id = context.req.param("id")
+
+    await Lesson.findByIdAndDelete(id).exec()
+
+    return context.text("Lesson deleted")
+  }) // TODO: Delete one lesson
   .put("/:id/update", context => context.text("Hello World!")) // TODO: Update one lesson
-  .delete("/:id/delete", context => context.text("Hello World!")) // TODO: Delete one lesson
 
 export default lessons
