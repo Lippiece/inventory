@@ -3,6 +3,5 @@ import { defineConfig } from "astro/config"
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [alpinejs({ entrypoint: "./src/alpine" })],
+  integrations: [alpinejs({ entrypoint: "./alpine" })],
 })
-
