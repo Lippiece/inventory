@@ -40,6 +40,18 @@ const right = (index: number) =>
             <button id="right" @click={right(index)}>
               &#10095;
             </button>
+            <button id="close" @click="open = false">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M2 30L30 2m0 28L2 2"
+                />
+              </svg>{" "}
+            </button>
           </li>
         ))
       }
@@ -72,6 +84,15 @@ const right = (index: number) =>
 
     background: rgba(0, 0, 0, 0.5);
 
+    button#close {
+      top: 1rem;
+      right: 1rem;
+      width: 3rem;
+      height: 3rem;
+      background: none;
+      color: white;
+    }
+
     button {
       position: absolute;
       z-index: 1;
@@ -93,7 +114,10 @@ const right = (index: number) =>
       }
 
       @media screen and (max-width: 768px) {
-        display: none;
+        &#left,
+        &#right {
+          display: none;
+        }
       }
     }
 

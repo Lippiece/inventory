@@ -28,8 +28,10 @@ const sources = [
         Школа танца ParaBailar: первая школа фламенко за Уралом, где есть свой
         театр!
       </p>
-      <p>Занятия в центре Новосибирска. Записывайтесь по телефону</p>
-      <a class="tel" href="tel:+79039375513">+7 (903) 937-55-13</a>
+      <p>
+        Занятия в центре Новосибирска. Записывайтесь по телефону
+        <a class="tel" href="tel:+79039375513">+7 (903) 937-55-13</a>
+      </p>
 
       <Form />
     </section>
@@ -75,9 +77,10 @@ const sources = [
           />
         </li>
       </ul>
-    </section>
 
-    <section>
+      <p>
+        Фламенко – это не только танец, это страсть, яркие эмоции и творчество.
+      </p>
       <Lightbox sources={sources} />
     </section>
 
@@ -269,6 +272,14 @@ const sources = [
       rgba(25, 25, 25, 1) 90%
     );
 
+    ul {
+      margin-bottom: 2rem;
+    }
+
+    ol {
+      text-align: left;
+    }
+
     &#hero {
       position: relative;
       background: none;
@@ -343,6 +354,10 @@ const sources = [
         height: 2rem;
         background: #121212;
         font-size: 1rem;
+
+        &:focus {
+          outline: 0.1rem solid #ababab;
+        }
       }
     }
   }
