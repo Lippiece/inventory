@@ -1,9 +1,13 @@
 <form x-data action="">
-  <input
-    name="phone"
-    type="tel"
-    x-mask="+7 (999) 999-99-99"
-    placeholder="Телефон"
-  />
+  <label for="phone">
+    Ваш номер
+    <input
+      id="phone"
+      name="phone"
+      type="tel"
+      x-mask="+7 (999) 999-99-99"
+      placeholder="+7 (___) ___-__-__"
+    />
+  </label>
   <button type="submit">Записаться</button>
 </form>

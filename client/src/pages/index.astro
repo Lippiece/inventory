@@ -1,21 +1,22 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import Nav from "../components/Nav.astro";
-import Form from "../components/Form.astro";
-import Lightbox from "../components/Lightbox.astro";
+import Layout from "../layouts/Layout.astro"
+import Card from "../components/Card.astro"
+import Nav from "../components/Nav.astro"
+import Form from "../components/Form.astro"
+import Lightbox from "../components/Lightbox.astro"
+import dancers from "../data/dancers.json"
+import teachers from "../data/teachers.json"
+import interiors from "../data/interiors.json"
 
-const sources = [
-  "https://static.tildacdn.com/tild6461-3234-4438-a266-376234623632/photo_2022-11-19_22-.jpg",
-  "https://static.tildacdn.com/tild3331-6335-4434-a331-336161366262/photo_2022-11-19_22-.jpg",
-  "https://static.tildacdn.com/tild3830-3035-4665-b165-313466393564/photo_2022-11-19_22-.jpg",
-  "https://static.tildacdn.com/tild3566-3164-4238-b139-393237646662/photo_2022-11-19_22-.jpg",
-  "https://static.tildacdn.com/tild3335-6132-4565-b630-323137373035/IMG_9326.jpg",
-  "https://static.tildacdn.com/tild3437-6436-4032-a265-303366366661/photo_2022-11-19_22-.jpg",
-  "https://static.tildacdn.com/tild6430-6466-4036-a533-666334313464/IMG_9086.jpg",
-  "https://static.tildacdn.com/tild3362-3064-4238-b132-323164396161/IMG_9463.jpg",
-];
+const left = (index: number, length: number) =>
+  `index = ${index === 0 ? length - 1 : index - 1}`
+const right = (index: number, length: number) =>
+  `index = ${index === length - 1 ? 0 : index + 1}`
 ---
+
+<script>
+  import "swiped-events/dist/swiped-events.min.js"
+</script>
 
 <Layout title="Школа ParaBailar — обучение фламенко в Новосибирске">
   <main>
@@ -81,7 +82,7 @@ const sources = [
       <p>
         Фламенко – это не только танец, это страсть, яркие эмоции и творчество.
       </p>
-      <Lightbox sources={sources} />
+      <Lightbox sources={dancers} />
     </section>
 
     <section id="teachers">
@@ -93,28 +94,30 @@ const sources = [
           музыку и ритм.
         </p>
 
-        <ul>
-          <li>
-            <Card
-              href="/about"
-              title="Екатерина Опарышева"
-              body="Один из сильнейших российских преподавателей фламенко, хореограф-постановщик для солистов и коллективов фламенко от Калининграда до Южно-Сахалинска. Основатель школы «Barrio Flamenco» в г.Москва. Участница и создатель международного проекта «UNO», (хореография Ursula López)."
-            />
-          </li>
-          <li>
-            <Card
-              href="/about"
-              title="Дарья Барышева"
-              body="Танцовщица спектакля 'DINAMICA'. Постановщик и сценарист спектаклей 'DeNada' и 'Люди из Зазеркалья'. Ежегодно стажируется в школах фламенко Севильи, Гранады и Мадрида. Ученица именитых танцовщиков фламенко."
-            />
-          </li>
-          <li>
-            <Card
-              href="/about"
-              title="Екатерина Егорова"
-              body="Танцовщица спектаклей 'DeNada', 'Люди из Зазеркалья'. Ведущая проекта 'Открытая сцена фламенко'. Обучалась танцу фламенко и основам преподавания у Juan Diego Fernandez."
-            />
-          </li>
+        <ul x-data="{index: 0}">
+          {
+            teachers.map((teacher, index) => (
+              <li
+                x-transition
+                x-cloak
+                x-show={`index === ${index}`}
+                @swiped-right={right(index, teachers.length)}
+                @swiped-left={left(index, teachers.length)}
+              >
+                <button id="left" @click={left(index, teachers.length)}>
+                  {"<"}
+                </button>
+                <Card
+                  src={teacher.image}
+                  title={teacher.name}
+                  body={teacher.description}
+                />
+                <button id="right" @click={right(index, teachers.length)}>
+                  {">"}
+                </button>
+              </li>
+            ))
+          }
         </ul>
       </header>
     </section>
@@ -128,7 +131,27 @@ const sources = [
         </p>
       </header>
 
-      <!-- TODO: carousel -->
+      <ul x-data="{index: 0}">
+        {
+          interiors.map((interior, index) => (
+            <li
+              x-transition
+              x-cloak
+              x-show={`index === ${index}`}
+              @swiped-right={right(index, interiors.length)}
+              @swiped-left={left(index, interiors.length)}
+            >
+              <button id="left" @click={left(index, interiors.length)}>
+                {"<"}
+              </button>
+              <img src={interior} alt="Интерьер школы" />
+              <button id="right" @click={right(index, interiors.length)}>
+                {">"}
+              </button>
+            </li>
+          ))
+        }
+      </ul>
     </section>
 
     <section id="how">
@@ -319,6 +342,49 @@ const sources = [
             text-align: left;
           }
         }
+      }
+    }
+
+    &#teachers,
+    &#about {
+      ul {
+        position: relative;
+        display: block;
+        height: 30rem;
+
+        li {
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          button {
+            position: absolute;
+            top: 32%;
+            width: 3rem;
+
+            font-size: 3rem;
+
+            text-shadow: 0 0 1rem rgba(0, 0, 0, 1);
+            color: gray;
+            background: none;
+            border: none;
+
+            &#right {
+              right: 1rem;
+            }
+
+            &#left {
+              left: 1rem;
+            }
+          }
+        }
+      }
+    }
+
+    &#about {
+      ul {
+        height: 15rem;
+        width: 100%;
       }
     }
 
