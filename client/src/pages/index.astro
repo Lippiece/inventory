@@ -1,14 +1,15 @@
 ---
-import Layout from "../layouts/Layout.astro"
-import Card from "../components/Card.astro"
-import Nav from "../components/Nav.astro"
-import Form from "../components/Form.astro"
-import Lightbox from "../components/Lightbox.astro"
-import dancers from "../data/dancers.json"
-import teachers from "../data/teachers.json"
-import interiors from "../data/interiors.json"
+import Card from "@/components/Card.astro"
+import Flamenco from "@/components/Flamenco.astro"
+import Form from "@/components/Form.astro"
+import Hero from "@/components/Hero.astro"
+import Nav from "@/components/Nav.astro"
+import Reviews from "@/components/Reviews.astro"
+import interiors from "@/data/interiors.json"
+import teachers from "@/data/teachers.json"
+import Layout from "@/layouts/Layout.astro"
 
-const left = (index: number, length: number) =>
+const left  = (index: number, length: number) =>
   `index = ${index === 0 ? length - 1 : index - 1}`
 const right = (index: number, length: number) =>
   `index = ${index === length - 1 ? 0 : index + 1}`
@@ -22,68 +23,9 @@ const right = (index: number, length: number) =>
   <main>
     <Nav />
 
-    <section id="hero">
-      <h1>ФЛАМЕНКО для начинающих</h1>
-      <h1>Пробный урок 300 рублей</h1>
-      <p>
-        Школа танца ParaBailar: первая школа фламенко за Уралом, где есть свой
-        театр!
-      </p>
-      <p>
-        Занятия в центре Новосибирска. Записывайтесь по телефону <br />
-        <a class="tel" href="tel:+79039375513">+7 (903) 937-55-13</a>
-      </p>
+    <Hero />
 
-      <Form />
-    </section>
-
-    <section id="flamenco">
-      <h1>Что такое фламенко и зачем его танцевать?</h1>
-      <p>
-        Фламенко – это не только танец, это страсть, яркие эмоции и творчество.
-        Творчество, которое полно описывает любовь, одиночество, боль, радость и
-        счастье... Когда для выражения этих чувств не хватает слов, на помощь
-        приходит фламенко.
-      </p>
-      <p>
-        За свою многовековую историю фламенко впитало в себя элементы разных
-        танцевальных направлений:
-      </p>
-
-      <ul>
-        <li>
-          <h2>Классика и контемпорари</h2>
-          <img
-            src="https://optim.tildacdn.com/tild3063-3462-4937-a265-623934663337/-/resize/210x/-/format/webp/d2_Ioctx8M.png"
-            alt=""
-          />
-        </li>
-        <li>
-          <h2>Латинские танцы</h2>
-          <img
-            src="https://optim.tildacdn.com/tild3437-3633-4462-a531-623931616633/-/resize/283x/-/format/webp/d3.png"
-            alt=""
-          />
-        </li>
-        <li>
-          <h2>Восточные танцы</h2><img
-            src="https://optim.tildacdn.com/tild3737-3761-4336-b863-323734386139/-/resize/312x/-/format/webp/d4.png"
-            alt=""
-          />
-        </li>
-        <li>
-          <h2>Бальные танцы</h2><img
-            src="https://optim.tildacdn.com/tild6533-6439-4135-b435-353861343362/-/resize/271x/-/format/webp/d1_PfLtxrN.png"
-            alt=""
-          />
-        </li>
-      </ul>
-
-      <p>
-        Фламенко – это не только танец, это страсть, яркие эмоции и творчество.
-      </p>
-      <Lightbox sources={dancers} />
-    </section>
+    <Flamenco />
 
     <section id="teachers">
       <header>
@@ -217,68 +159,50 @@ const right = (index: number, length: number) =>
     <Form />
   </section>
 
-  <section id="reviews">
-    <h2>Отзывы наших учениц</h2>
-
-    <ul>
-      <li>
-        <img src="" alt="" />
-        <p>
-          Мне очень нравится учиться у Даши. Не затанцевать у неё не возможно -
-          лениться не даст. Раскрывая индивидуальность каждого в танце, она
-          также развивает сложный навык импровизации. А еще она идейная!
-          ParaBailar - моё любимое место. Настоящая творческая лаборатория и
-          уютный дом)
-        </p>
-        <h4>Нина</h4>
-      </li>
-      <li>
-        <img src="" alt="" />
-        <p>
-          Почти два года назад я и не думала танцевать. В соц. сети мне попалась
-          реклама открытых уроков ParaBailar. Ооо, первое знакомство было
-          непростым, но... зацепило. Я решительно приобрела абонемент, первые
-          туфли, и началось моё путешествие по чувственному миру испанской
-          музыки и культуры, путешествие к изменениям своего тела и сознания.
-          Фламенко вдохновляет!
-        </p>
-        <h4>Юля</h4>
-      </li>
-      <li>
-        <img src="" alt="" />
-        <p>
-          Занималась в этой прекрасной студии! Классный преподавательский
-          состав🔥 Все очень слаженно, продумано, весело и задорно!❤️ Можно
-          смело идти на любом уровне танцевальной подготовки! Т.к.
-          индивидуальный подход к каждому
-        </p>
-        <h4>Дарья</h4>
-      </li>
-      <li>
-        <img src="" alt="" />
-        <p>
-          Это прежде всего коллектив энтузиастов, которые увлечены танцем, что,
-          конечно, отражается и на атмосфере в школе. Спасибо за комфортную
-          атмосферу, удобное место расположения, профессиональный коллектив
-          педагогов и хорошее настроение!
-        </p>
-        <h4>Елена</h4>
-      </li>
-    </ul>
-  </section>
+  <Reviews />
 
   <footer>
     <h3>Приходите в ParaBailar</h3>
     <p>
-      Новосибирск, м. Пл. Ленина ул. Коммунистическая, 1 (вход с ул. Революции)
-      ИП Корнет Наталья Владимировна ИНН 5404100002709 ОГРН 319547600006116
-
+      Новосибирск, м. Пл. Ленина <br />
+      ул. Коммунистическая, 1 <br />
+      (вход с ул. Революции) <br />
+      ИП Корнет Наталья Владимировна <br />
+      ИНН 5404100002709 <br />
+      ОГРН 319547600006116 <br />
       <a class="tel" href="tel:+79039375513"> +7 (903) 937-55-13 </a>
     </p>
 
-    <!-- TODO: VK, Instagram -->
+    <div class="icons">
+      <a href="https://vk.com/parabailar_nsk">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="200"
+          height="200"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M15.073 2H8.937C3.333 2 2 3.333 2 8.927v6.136C2 20.666 3.323 22 8.927 22h6.136C20.666 22 22 20.677 22 15.073V8.937C22 3.333 20.677 2 15.073 2Zm3.073 14.27h-1.459c-.552 0-.718-.447-1.708-1.437c-.864-.833-1.229-.937-1.448-.937c-.302 0-.385.083-.385.5v1.312c0 .355-.115.563-1.042.563a5.692 5.692 0 0 1-4.448-2.667a11.626 11.626 0 0 1-2.302-4.833c0-.219.083-.417.5-.417h1.458c.375 0 .51.167.657.552c.708 2.084 1.916 3.896 2.406 3.896c.188 0 .27-.083.27-.552v-2.146c-.062-.979-.582-1.062-.582-1.416a.36.36 0 0 1 .374-.334h2.292c.313 0 .417.156.417.531v2.896c0 .313.135.417.229.417c.188 0 .333-.104.677-.448a11.999 11.999 0 0 0 1.792-2.98a.628.628 0 0 1 .635-.416h1.459c.437 0 .53.219.437.531a18.205 18.205 0 0 1-1.958 3.365c-.157.24-.22.365 0 .646c.145.219.656.646 1 1.052a6.486 6.486 0 0 1 1.229 1.708c.125.406-.084.615-.5.615Z"
+          ></path>
+        </svg></a
+      >
 
-    <!-- TODO: map -->
+      <a href="https://www.instagram.com/parabailar_nsk/">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="200"
+          height="200"
+          viewBox="0 0 56 56"
+        >
+          <path
+            fill="currentColor"
+            fill-rule="evenodd"
+            d="M39.006 3C46.735 3 53 9.27 53 16.994v22.012C53 46.735 46.73 53 39.006 53H16.994C9.265 53 3 46.73 3 39.006V16.994C3 9.265 9.27 3 16.994 3zM28 15c-7.18 0-13 5.82-13 13s5.82 13 13 13s13-5.82 13-13s-5.82-13-13-13m0 4a9 9 0 1 1 0 18a9 9 0 0 1 0-18m14.5-9a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7"
+          ></path>
+        </svg>
+      </a>
+    </div>
   </footer>
 </Layout>
 
@@ -289,80 +213,45 @@ const right = (index: number, length: number) =>
     font-size: 20px;
     line-height: 1.6;
   }
-  section {
-    padding: 2rem 1rem;
-    overflow: hidden;
 
+  section#hero-footer {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    justify-content: space-between;
+    background: none;
 
-    background: rgb(25, 25, 25);
-    background: linear-gradient(
-      180deg,
-      rgba(25, 25, 25, 1) 10%,
-      rgba(10, 10, 10, 0.3) 50%,
-      rgba(25, 25, 25, 1) 90%
-    );
-    color: white;
-
-    ul {
-      margin-bottom: 2rem;
+    h1,
+    h2 {
+      line-height: 1.3;
     }
 
-    ol {
-      text-align: left;
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-image: url("https://static.tildacdn.com/tild3863-6639-4537-a235-393964336634/noroot.png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      opacity: 0.3;
+      content: "";
     }
+  }
 
-    &#hero {
-      position: relative;
-      background: none;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background-image: url("https://static.tildacdn.com/tild3062-6664-4436-b933-306339366430/noroot.png");
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        overflow: hidden;
-        opacity: 0.3;
-      }
-    }
-
-    &#flamenco {
-      ul {
-        li {
-          display: flex;
-
-          h2 {
-            text-align: right;
-            text-wrap: wrap;
-          }
-        }
-
-        li:nth-child(even) {
-          flex-direction: row-reverse;
-          h2 {
-            text-align: left;
-          }
-        }
-      }
-    }
-
+  section {
     &#teachers,
     &#about {
       ul {
         position: relative;
-        display: block;
-        height: 30rem;
+        display: flex;
+        height: 35rem;
 
         li {
           position: absolute;
@@ -373,11 +262,9 @@ const right = (index: number, length: number) =>
             position: absolute;
             top: 32%;
             width: 3rem;
-
-            font-size: 3rem;
-
-            text-shadow: 0 0 1rem rgba(0, 0, 0, 1);
             color: gray;
+            font-size: 3rem;
+            text-shadow: 0 0 1rem rgb(0 0 0 / 100%);
             background: none;
             border: none;
 
@@ -395,92 +282,46 @@ const right = (index: number, length: number) =>
 
     &#about {
       ul {
+        width: 100%;
         height: 15rem;
-        width: 100%;
-      }
-    }
-
-    &#hero-footer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-
-      position: relative;
-      background: none;
-
-      h1,
-      h2 {
-        line-height: 1.3;
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background-image: url("https://static.tildacdn.com/tild3863-6639-4537-a235-393964336634/noroot.png");
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        overflow: hidden;
-        opacity: 0.3;
-      }
-    }
-
-    form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-
-      button {
-        width: 90%;
-        height: 3rem;
-        border-radius: 2rem;
-        border: 0;
-        font-size: 1rem;
-        font-weight: bold;
-        cursor: pointer;
-
-        background: #dfb114ff;
-        color: white;
-        text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-
-        &:hover {
-          background: #dfb114cc;
-        }
-      }
-
-      input {
-        border-radius: 0.2rem;
-        border: 0;
-        padding: 0.5rem 2rem;
-        height: 2rem;
-        background: #121212;
-        font-size: 1rem;
-
-        &:focus {
-          outline: 0.1rem solid #ababab;
-        }
       }
     }
   }
 
+  ol > li {
+    padding: 2rem;
+  }
+
   h1 {
-    font-size: 3rem;
+    margin: 0;
     font-weight: 700;
+    font-size: 3rem;
     line-height: 1;
     text-align: center;
-    margin: 0;
 
     &:last-of-type {
       margin-bottom: 1em;
+    }
+  }
+
+  footer {
+    padding: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .icons {
+      display: flex;
+
+      svg {
+        width: 3rem;
+        height: 3rem;
+
+        path {
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
   }
 </style>

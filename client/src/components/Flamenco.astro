@@ -1,0 +1,73 @@
+
+
+---
+import Lightbox from "./Lightbox.astro"
+import dancers from "../data/dancers.json"
+---
+
+<section id="flamenco">
+  <h1>Что такое фламенко и зачем его танцевать?</h1>
+  <p>
+    Фламенко – это не только танец, это страсть, яркие эмоции и творчество.
+    Творчество, которое полно описывает любовь, одиночество, боль, радость и
+    счастье... Когда для выражения этих чувств не хватает слов, на помощь
+    приходит фламенко.
+  </p>
+  <p>
+    За свою многовековую историю фламенко впитало в себя элементы разных
+    танцевальных направлений:
+  </p>
+
+  <ul>
+    <li>
+      <h2>Классика и контемпорари</h2>
+      <img
+        src="https://optim.tildacdn.com/tild3063-3462-4937-a265-623934663337/-/resize/210x/-/format/webp/d2_Ioctx8M.png"
+        alt=""
+      />
+    </li>
+    <li>
+      <h2>Латинские танцы</h2>
+      <img
+        src="https://optim.tildacdn.com/tild3437-3633-4462-a531-623931616633/-/resize/283x/-/format/webp/d3.png"
+        alt=""
+      />
+    </li>
+    <li>
+      <h2>Восточные танцы</h2><img
+        src="https://optim.tildacdn.com/tild3737-3761-4336-b863-323734386139/-/resize/312x/-/format/webp/d4.png"
+        alt=""
+      />
+    </li>
+    <li>
+      <h2>Бальные танцы</h2><img
+        src="https://optim.tildacdn.com/tild6533-6439-4135-b435-353861343362/-/resize/271x/-/format/webp/d1_PfLtxrN.png"
+        alt=""
+      />
+    </li>
+  </ul>
+
+  <p>Фламенко – это не только танец, это страсть, яркие эмоции и творчество.</p>
+  <Lightbox sources={dancers} />
+</section>
+<style>
+  section#flamenco {
+    ul {
+      li {;
+
+        display: flex;
+
+        h2 {;
+          text-wrap: wrap;
+        }
+      };
+      li:nth-child(even) {;
+        flex-direction: row-reverse;
+
+        h2 {;
+          text-align: left;
+        }
+      }
+    }
+  }
+</style>
