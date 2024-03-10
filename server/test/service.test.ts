@@ -7,13 +7,8 @@ import mongoose from "mongoose"
 import Lesson, { ILesson } from "@/models/Lesson"
 import Service from "@/models/Service"
 import { servicesRoutes } from "@/routes/services"
+import ServiceList from "@/views/service/ServiceList"
 
-const service           = new Service({
-  description: "description",
-  duration   : 1,
-  name       : "name",
-  price      : 1,
-})
 const createSerivceData = (number: number) => ({
   description: `description ${number}`,
   duration   : number,
@@ -27,7 +22,7 @@ const getNewLessonData  = (number: number): ILesson => ({
   date       : new Date(),
   description: `description ${number}`,
   price      : number,
-  service    : services[number - 1],
+  service    : services[number - 1]._id,
   title      : `title ${number}`,
 })
 const getNewLesson      = (number: number) => new Lesson(getNewLessonData(number))
@@ -39,8 +34,8 @@ describe("lesson controllers", () => {
   beforeAll(async () => {
     await mongoose.connection.dropCollection("lessons")
     await mongoose.connection.dropCollection("services")
-    await service.save()
     await Promise.all(lessons.map(async lesson => await lesson.save()))
+    await Promise.all(services.map(async service => await service.save()))
   })
 
   describe("services", () => {
@@ -50,9 +45,7 @@ describe("lesson controllers", () => {
 
       expect(response.status).toBe(200)
 
-      services.map(service => {
-        expect(text).toInclude(service.name)
-      })
+      expect(text).toBe(ServiceList({ services }).toString())
     }, 1000)
   })
 })
