@@ -3,6 +3,7 @@ import Service from "@/models/Service"
 
 const Lesson = async ({ lesson }: { lesson: ILesson }) => {
   const service = await Service.findById(lesson.service)
+
   return (
     <article>
       <h2>
@@ -13,7 +14,7 @@ const Lesson = async ({ lesson }: { lesson: ILesson }) => {
         </span>
       </h2>
       <h3>
-        {lesson.date?.toLocaleString("ru-RU")}
+        {lesson.date.toLocaleString("ru-RU")}
         {": "}
       </h3>
       {lesson.service && (

@@ -20,6 +20,7 @@ const lessonPutSchema = object({
 
   description: optional(string()),
   price      : optional(coerce(number(), coerceNumber)),
+  service    : optional(string()),
   title      : optional(string()),
 })
 

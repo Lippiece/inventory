@@ -22,7 +22,7 @@ app.use(
 // Routes
 app
   .get("/", context => context.redirect("/api"))
-  .get("/error", () => nonexistentthing)
+  .get("/error", context => context.text(new Error("An error")))
 
 app.route("/api", api)
 

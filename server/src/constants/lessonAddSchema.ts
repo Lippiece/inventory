@@ -19,6 +19,7 @@ const lessonAddSchema = object({
 
   description: string(),
   price      : coerce(number(), Number),
+  service    : string(),
   title      : string([minLength(1)]),
 })
 
