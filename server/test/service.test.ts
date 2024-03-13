@@ -54,4 +54,15 @@ describe("lesson controllers", () => {
     expect(response.status).toBe(200)
     expect(text).toBe(ServiceJSX({ service: services[0] }).toString())
   }, 1000)
+
+  it("should create a service, accepting new data", async () => {
+    const newService = getNewService(4)
+    const response   = await client[`${newService._id}/add`].$post({
+      form: createSerivceData(4),
+    })
+    const text       = await response.text()
+
+    expect(response.status).toBe(200)
+    expect(text).toBe(ServiceJSX({ service: newService }).toString())
+  }, 1000)
 })

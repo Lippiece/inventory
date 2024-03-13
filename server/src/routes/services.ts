@@ -3,6 +3,8 @@ import { Hono } from "hono"
 import Service from "@/models/Service"
 import ServiceJSX from "@/views/service/Service"
 import ServiceList from "@/views/service/ServiceList"
+import { vValidator } from "@hono/valibot-validator"
+import serviceAddSchema from "@/constants/service/serviceAddSchema"
 
 const services = new Hono()
 
@@ -18,11 +20,18 @@ export const servicesRoutes = services
 
     return await context.html(ServiceJSX({ service }))
   })
-  .post("/:id/add", async context => {
-    // TODO: Create service
-    const id = context.req.param("id")
+  .post("/:id/add", 
+  vValidator("form", serviceAddSchema, (result, context) => {
+    if (!result.success) {
+      return context.json(result.issues, 400)
+    }
+  }),
+  async context => {
+    const service = new Service(context.req.valid("form"))
 
-    return context.text("Service created")
+    await service.save()
+
+    return context.html(ServiceJSX({ service }))
   })
   .put("/:id/update", async context => {
     // TODO: Update service
