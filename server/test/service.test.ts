@@ -73,4 +73,19 @@ describe("lesson controllers", () => {
     expect(response.status).toBe(200)
     expect(text).toBe("Service deleted")
   }, 1000)
+
+  it("should update a service's fields", async () => {
+    const form     = { description: "new description" }
+    const response = await client[`${services[1]._id}/update`].$put({
+      form,
+    })
+    const text     = await response.text()
+
+    expect(response.status).toBe(200)
+    expect(text).toBe(
+      ServiceJSX({
+        service: { ...services[1].toObject(), ...form },
+      }).toString(),
+    )
+  }, 1000)
 })
