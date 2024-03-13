@@ -65,4 +65,12 @@ describe("lesson controllers", () => {
     expect(response.status).toBe(200)
     expect(text).toBe(ServiceJSX({ service: newService }).toString())
   }, 1000)
+
+  it("should delete a service", async () => {
+    const response = await client[`${services[0]._id}/delete`].$delete()
+    const text     = await response.text()
+
+    expect(response.status).toBe(200)
+    expect(text).toBe("Service deleted")
+  }, 1000)
 })

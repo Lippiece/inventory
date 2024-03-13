@@ -40,8 +40,9 @@ export const servicesRoutes = services
     return context.text("Service updated")
   })
   .delete("/:id/delete", async context => {
-    // TODO: Delete service
     const id = context.req.param("id")
+
+    await Service.findByIdAndDelete(id)
 
     return context.text("Service deleted")
   })
