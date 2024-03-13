@@ -7,6 +7,7 @@ import mongoose from "mongoose"
 import Lesson, { ILesson } from "@/models/Lesson"
 import Service from "@/models/Service"
 import { servicesRoutes } from "@/routes/services"
+import ServiceJSX from "@/views/service/Service"
 import ServiceList from "@/views/service/ServiceList"
 
 const createSerivceData = (number: number) => ({
@@ -38,14 +39,19 @@ describe("lesson controllers", () => {
     await Promise.all(services.map(async service => await service.save()))
   })
 
-  describe("services", () => {
-    it("should return all services", async () => {
-      const response = await client.index.$get()
-      const text     = await response.text()
+  it("should get all services", async () => {
+    const response = await client.index.$get()
+    const text     = await response.text()
 
-      expect(response.status).toBe(200)
+    expect(response.status).toBe(200)
+    expect(text).toBe(ServiceList({ services }).toString())
+  }, 1000)
 
-      expect(text).toBe(ServiceList({ services }).toString())
-    }, 1000)
-  })
+  it("should get one service", async () => {
+    const response = await client[services[0]._id].$get()
+    const text     = await response.text()
+
+    expect(response.status).toBe(200)
+    expect(text).toBe(ServiceJSX({ service: services[0] }).toString())
+  }, 1000)
 })

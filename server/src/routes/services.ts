@@ -1,22 +1,22 @@
 import { Hono } from "hono"
 
 import Service from "@/models/Service"
+import ServiceJSX from "@/views/service/Service"
 import ServiceList from "@/views/service/ServiceList"
 
 const services = new Hono()
 
 export const servicesRoutes = services
   .get("/", async context => {
-    // TODO: Get services
     const services = await Service.find()
 
     return await context.html(ServiceList({ services }))
   })
   .get("/:id", async context => {
-    // TODO: Get service
-    const id = context.req.param("id")
+    const id      = context.req.param("id")
+    const service = await Service.findById(id)
 
-    return context.text("Service")
+    return await context.html(ServiceJSX({ service }))
   })
   .post("/:id/add", async context => {
     // TODO: Create service
