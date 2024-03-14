@@ -3,6 +3,7 @@ import { Hono } from "hono"
 
 import lessonAddSchema from "@/constants/lessonAddSchema"
 import lessonPutSchema from "@/constants/lessonPutSchema"
+import validateId from "@/functions/validateId"
 import LessonJSX from "@/views/lesson/Lesson"
 import LessonsList from "@/views/lesson/LessonsList"
 
@@ -17,7 +18,7 @@ export const lessonsRoutes = lessons
     return await context.html(LessonsList(lessons))
   })
 
-  .get("/:id", async context => {
+  .get("/:id", validateId, async context => {
     const id     = context.req.param("id")
     const lesson = await Lesson.findById(id)
 

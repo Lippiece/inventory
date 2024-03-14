@@ -1,5 +1,6 @@
 import { vValidator } from "@hono/valibot-validator"
 import { Hono } from "hono"
+import { isValidObjectId } from "mongoose"
 
 import serviceAddSchema from "@/constants/service/serviceAddSchema"
 import servicePutSchema from "@/constants/service/servicePutSchema"
@@ -7,20 +8,36 @@ import Service from "@/models/Service"
 import ServiceJSX from "@/views/service/Service"
 import ServiceList from "@/views/service/ServiceList"
 
-const services = new Hono()
+const servicesRouter = new Hono()
 
-export const servicesRoutes = services
+export const servicesRoutes = servicesRouter
   .get("/", async context => {
     const services = await Service.find()
 
     return await context.html(ServiceList({ services }))
   })
-  .get("/:id", async context => {
-    const id      = context.req.param("id")
-    const service = await Service.findById(id)
+  .get(
+    "/:id",
 
-    return await context.html(ServiceJSX({ service }))
-  })
+    context => {
+      const id = context.req.param("id")
+
+      if (!isValidObjectId(id)) {
+        return context.text("Invalid ID", 400)
+      }
+    },
+
+    async context => {
+      const id = context.req.param("id")
+      const service = await Service.findById(id)
+
+      if (!service) {
+        return context.text("Service not found", 404)
+      }
+
+      return await context.html(ServiceJSX({ service }))
+    },
+  )
   .post(
     "/:id/add",
     vValidator("form", serviceAddSchema, (result, context) => {
@@ -49,9 +66,10 @@ export const servicesRoutes = services
 
       if (service) {
         await service.updateOne(context.req.valid("form"))
+
         const newService = await Service.findById(id)
 
-        return context.html(ServiceJSX({ service: newService }))
+        return await context.html(ServiceJSX({ service: newService }))
       }
 
       return context.text("Service not found", 404)
@@ -65,4 +83,4 @@ export const servicesRoutes = services
     return context.text("Service deleted")
   })
 
-export default services
+export default servicesRouter

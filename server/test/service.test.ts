@@ -88,4 +88,15 @@ describe("lesson controllers", () => {
       }).toString(),
     )
   }, 1000)
+
+  it("should validate data", async () => {
+    const form     = { price: "invalid" }
+    const response = await client[`${services[1]._id}/update`].$put({
+      form,
+    })
+    const text     = await response.text()
+
+    expect(response.status).toBe(400)
+    expect(text).toContain("Expected number")
+  }, 1000)
 })
