@@ -5,6 +5,7 @@ import Footer from "@/components/Footer.astro"
 import Form from "@/components/Form.astro"
 import Gallery from "@/components/Gallery.astro"
 import Header from "@/components/Header.astro"
+import News from "@/components/News.astro"
 import Pricing from "@/components/Pricing.astro"
 import Program from "@/components/Program.astro"
 import Reviews from "@/components/Reviews.astro"
@@ -16,18 +17,19 @@ import Layout from "@/layouts/Layout.astro"
 
 <Layout title="Школа ParaBailar — обучение фламенко в Новосибирске">
   <Header />
-  <main class="container px-6 py-2 flex flex-col align-center">
+  <main class="w-full px-6 py-2 flex flex-col items-center justify-center">
     <About />
     <Why />
     <Program />
     <Teachers />
     <Gallery />
     <Schedule />
+    <News />
     <Pricing />
     <Reviews />
   </main>
   <Form />
-  <main class="px-6 py-2">
+  <main class="w-full px-6 py-2 flex flex-col items-center justify-center">
     <Faq />
   </main>
   <Footer />
