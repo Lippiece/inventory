@@ -1,22 +1,42 @@
 ---
-
+import headerLogo from "../assets/headerLogo.png"
 ---
 
-<header>
-  <nav>
-    <img src="" alt="" />
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
+<header class="text-white pb-8">
+  <nav class="flex justify-between items-center h-16 px-4">
+    <img src={headerLogo.src} alt="Logo" class="h-full w-auto" />
+    <div class="flex gap-2">
+      <p>О школе</p>
+      <p>Расписание</p>
+      <p>Стоимость</p>
+      <p>Преподаватели</p>
+      <p>Новости</p>
+    </div>
+    <a href="tel:+79039375513" class="font-bold">+7 (903) 937-55-13</a>
   </nav>
-  <div id="hero">
-    <h2>Школа фламенко в центре Новосибирска</h2>
+  <div id="hero" class="flex flex-col gap-4 text-left items-start px-8 py-4">
+    <div class="flex gap-4 items-center">
+      <hr />
+      <p class="text-2xl">Школа фламенко в центре Новосибирска</p>
+    </div>
     <img src="" alt="" />
-    <hr />
-    <p>У вас есть все, чтобы танцевать</p>
-    <button>Хочу танцевать</button>
+    <h1 class="text-6xl w-3/4">Пробное занятие для начинающих за 300 руб</h1>
+    <button class="bg-red-700 text-white px-4 py-2 rounded-xl"
+      >Оставить заявку</button
+    >
   </div>
 </header>
+
+<style>
+  hr {
+    border-left: 3px solid gray;
+    border-radius: 5px;
+    height: 36px;
+  }
+
+  header {
+    background-image: url("../assets/headerBg.png");
+    background-size: cover;
+    background-position: center;
+  }
+</style>
