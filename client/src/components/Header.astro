@@ -3,25 +3,81 @@ import headerLogo from "../assets/headerLogo.png"
 ---
 
 <header class="text-white pb-8">
-  <nav class="flex justify-between items-center h-16 px-4">
-    <img src={headerLogo.src} alt="Logo" class="h-full w-auto" />
-    <div class="flex gap-2">
-      <p>О школе</p>
-      <p>Расписание</p>
-      <p>Стоимость</p>
-      <p>Преподаватели</p>
-      <p>Новости</p>
+  <nav x-data="{ open: false }">
+    <div class="flex justify-between items-center h-24 px-4" x-show="!open">
+      <img
+        src={headerLogo.src}
+        alt="Логотип ParaBailar"
+        class="h-full w-auto"
+      />
+      <div
+        class="hidden lg:flex gap-2 text-lg uppercase items-center justify-center h-24 mx-4"
+      >
+        <a href="#about">О школе</a>
+        <a href="#schedule">Расписание</a>
+        <a href="#pricing">Стоимость</a>
+        <a href="#teachers">Преподаватели</a>
+        <a href="#news">Новости</a>
+      </div>
+      <button class="text-2xl block lg:hidden" @click="open = !open">
+        <svg
+          width="71"
+          height="56"
+          viewBox="0 0 41 26"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M40.5 2H0.5V0H40.5V2Z" fill="white"></path>
+          <path d="M40.5 14H0.5V12H40.5V14Z" fill="white"></path>
+          <path d="M0.5 26H40.5V24H0.5V26Z" fill="white"></path>
+        </svg>
+      </button>
+      <a href="tel:+79039375513" class="font-bold text-2xl"
+        >+7 (903) 937-55-13</a
+      >
     </div>
-    <a href="tel:+79039375513" class="font-bold">+7 (903) 937-55-13</a>
+
+    <div
+      class="flex flex-col items-center justify-between gap-8 p-8 h-full w-full relative text-3xl uppercase"
+      x-show="open"
+      x-transition
+    >
+      <a href="#about">О школе</a>
+      <a href="#schedule">Расписание</a>
+      <a href="#pricing">Стоимость</a>
+      <a href="#teachers">Преподаватели</a>
+      <a href="#news">Новости</a>
+      <button @click="open = !open" class="absolute top-8 right-8">
+        <svg
+          width="48"
+          height="48"
+          viewBox="0 0 26 26"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 25L25 1M25 25L1 1"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </div>
   </nav>
-  <div id="hero" class="flex flex-col gap-4 text-left items-start px-8 py-4">
+  <div
+    id="hero"
+    class="flex flex-col gap-8 text-left items-left justify-end px-8 py-4 h-screen"
+  >
     <div class="flex gap-4 items-center">
       <hr />
-      <p class="text-2xl">Школа фламенко в центре Новосибирска</p>
+      <p class="text-4xl">Школа фламенко в центре Новосибирска</p>
     </div>
     <img src="" alt="" />
-    <h1 class="text-6xl w-3/4">Пробное занятие для начинающих за 300 руб</h1>
-    <button class="bg-red-700 text-white px-4 py-2 rounded-xl"
+    <h1 class="text-7xl w-full font-bold">
+      Пробное занятие для начинающих за 300 руб
+    </h1>
+    <button
+      class="bg-red-700/80 text-white px-4 py-2 rounded-xl text-2xl h-20 active:bg-red-700 lg:hover:bg-red-700"
       >Оставить заявку</button
     >
   </div>
@@ -29,14 +85,18 @@ import headerLogo from "../assets/headerLogo.png"
 
 <style>
   hr {
-    border-left: 3px solid gray;
+    border-left: 3px solid #ffffff99;
     border-radius: 5px;
-    height: 36px;
+    height: 80px;
   }
 
   header {
     background-image: url("../assets/headerBg.png");
     background-size: cover;
     background-position: center;
+  }
+
+  nav {
+    background-color: #14422580;
   }
 </style>
