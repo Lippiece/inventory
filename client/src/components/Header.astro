@@ -4,7 +4,11 @@ import headerLogo from "../assets/headerLogo.png"
 
 <header class="text-white pb-8">
   <nav x-data="{ open: false }">
-    <div class="flex justify-between items-center h-24 px-4" x-show="!open">
+    <div
+      class="flex justify-between items-center h-24 px-4"
+      x-show="!open"
+      x-cloak
+    >
       <img
         src={headerLogo.src}
         alt="Логотип ParaBailar"
@@ -39,6 +43,7 @@ import headerLogo from "../assets/headerLogo.png"
 
     <div
       class="flex flex-col items-center justify-between gap-8 p-8 h-full w-full relative text-3xl uppercase"
+      x-cloak
       x-show="open"
       x-transition
     >
