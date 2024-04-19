@@ -1,45 +1,54 @@
-<section>
-  <img src="" alt="" id="why" />
-  <div class="grid grid-cols-4 gap-4">
-    <figure>
-      <img src="" alt="" />
-      <figcaption>
-        <h3>Эмоциональная разгрузка</h3>
-        <p>
-          Через танец есть возможность выплеснуть эмоции, которые не всегда
-          можно выразить в повседневной жизни
-        </p>
-      </figcaption>
-    </figure>
-    <figure>
-      <img src="" alt="" />
-      <figcaption>
-        <h3>Красивое тело</h3>
-        <p>
-          В танце формируется красивая осанка, улучшается гибкость и
-          координация, укрепляется мышечный корсет
-        </p>
-      </figcaption>
-    </figure>
-    <figure>
-      <img src="" alt="" />
-      <figcaption>
-        <h3>Любовь к себе</h3>
-        <p>
-          Фламенко дает возможность узнать и принять себя разную:
-          непредсказуемую, дерзкую, уверенную
-        </p>
-      </figcaption>
-    </figure>
-    <figure>
-      <img src="" alt="" />
-      <figcaption>
-        <h3>Возможность похудеть</h3>
-        <p>
-          Благодаря регулярности физической нагрузки и укреплению групп мышц,
-          вес уходит, а тело подтягивается
-        </p>
-      </figcaption>
-    </figure>
+---
+import { Image } from "astro:assets"
+
+import why from "../assets/why.png"
+---
+
+<section class="container p-8">
+  <h1 class="text-5xl mb-4">Зачем танцевать фламенко?</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-3xl">
+    <Image src={why} alt="Девушки танцуют фламенко" class="h-full row-span-2" />
+    <article class="rounded-lg">
+      <h2 class="text-4xl text-rose-700 font-bold mb-2">
+        Эмоциональная разгрузка
+      </h2>
+      <p class="text-gray-700">
+        Через танец есть возможность выплеснуть эмоции, которые не всегда можно
+        выразить в повседневной жизни
+      </p>
+    </article>
+    <article class="rounded-lg">
+      <h2 class="text-4xl text-rose-700 font-bold mb-2">Красивое тело</h2>
+      <p class="text-gray-700">
+        Атмосферное творческое пространство в центре Новосибирска с собственным
+        театром
+      </p>
+    </article>
+    <article class="rounded-lg">
+      <h2 class="text-4xl text-rose-700 font-bold mb-2">Любовь к себе</h2>
+      <p class="text-gray-700">
+        Фламенко дает возможность узнать и принять себя разную: непредсказуемую,
+        дерзкую, уверенную
+      </p>
+    </article>
+    <article class="rounded-lg">
+      <h2 class="text-4xl text-rose-700 font-bold mb-2">
+        Возможность похудеть
+      </h2>
+      <p class="text-gray-700">
+        Благодаря регулярности физической нагрузки и укреплению групп мышц, вес
+        уходит, а тело подтягивается
+      </p>
+    </article>
   </div>
 </section>
+
+<style>
+  h1 {
+    font-family: "SixHandsChalk", cursive;
+  }
+
+  img {
+    object-fit: cover;
+  }
+</style>
