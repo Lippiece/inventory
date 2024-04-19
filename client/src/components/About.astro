@@ -1,32 +1,48 @@
-<section class="container bg-gray-200 p-8">
-  <h1 class="text-2xl font-bold mb-4">О школе</h1>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <figure>
-      <img src="" alt="" />
-      <figcaption></figcaption>
-    </figure>
-    <article class="p-6 rounded-lg">
-      <h2 class="text-xl font-bold mb-2">Возможность снять стресс</h2>
+---
+import { Image } from "astro:assets"
+
+import about from "../assets/about.png"
+---
+
+<section class="container p-8">
+  <h1 class="text-5xl mb-4">О школе</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-3xl">
+    <Image
+      src={about}
+      alt="Девушки танцуют фламенко"
+      class="h-full row-span-2"
+    />
+    <p class="row-span-2 text-4xl">
+      ParaBailar - это проект, посвященный танцу, раскрытию красоты девушек и
+      женщин в музыке и движении через изучение яркого и глубокого искусства
+      Фламенко
+    </p>
+    <article class="rounded-lg">
+      <h2 class="text-4xl text-rose-700 font-bold mb-2">
+        Возможность снять стресс
+      </h2>
       <p class="text-gray-700">
-        посвященный танцу, раскрытию красоты девушек и женщин в музыке и
-        движении через изучение яркого и глубокого искусства Фламенко
+        Надеть огненно-красное платье, отвлечься от рутины, найти новое
+        направление для развития, бросить себе вызов и победить
       </p>
     </article>
-    <article class="p-6 rounded-lg">
-      <h2 class="text-xl font-bold mb-2">Возможность снять стресс</h2>
+    <article class="rounded-lg">
+      <h2 class="text-4xl text-rose-700 font-bold mb-2">
+        Удобное расположение
+      </h2>
       <p class="text-gray-700">
-        Начать отлично-яркое счастье, отпустить от лучший, найти новаие
-        направление для размина, бористя себе выяще и повезить.
+        Атмосферное творческое пространство в центре Новосибирска с собственным
+        театром
       </p>
     </article>
-    <article class="p-6 rounded-lg">
-      <h2 class="text-xl font-bold mb-2">Мастер-классы</h2>
+    <article class="rounded-lg">
+      <h2 class="text-4xl text-rose-700 font-bold mb-2">Мастер-классы</h2>
       <p class="text-gray-700">
         возможность, пообщаться с настоящими звездами фламенко
       </p>
     </article>
-    <article class="p-6 rounded-lg">
-      <h2 class="text-xl font-bold mb-2">Комфорт</h2>
+    <article class="rounded-lg">
+      <h2 class="text-4xl text-rose-700 font-bold mb-2">Комфорт</h2>
       <p class="text-gray-700">
         Светлые и просторные залы, удобное расположение в центре.
         Невероятно-собственный ритмом
@@ -34,3 +50,13 @@
     </article>
   </div>
 </section>
+
+<style>
+  h1 {
+    font-family: "SixHandsChalk", cursive;
+  }
+
+  img {
+    object-fit: cover;
+  }
+</style>

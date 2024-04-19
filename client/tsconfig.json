@@ -1,12 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "include": [
-    "**/*.ts", 
-    "**/*.js",
-    "**/*.astro"
-  ],
+  "include": ["**/*.ts", "**/*.js", "**/*.astro"],
   "compilerOptions": {
     "moduleDetection": "auto",
+    "moduleResolution": "NodeNext",
     "baseUrl": "./",
     "allowJs": true,
     "checkJs": true,
