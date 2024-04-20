@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets"
 
+import jsonData from "../assets/teachers.json"
+
 const images  = import.meta.glob("../assets/teachers/*")
 const entries = Object.entries(images)
 ---
@@ -11,7 +13,7 @@ const entries = Object.entries(images)
 
 <section
   x-data="{current: 0}"
-  class="text-5xl flex justify-around items-center relative w-full"
+  class="text-5xl flex flex-col gap-10 justify-around items-center relative w-full"
   @swiped-right={`current = current <= 0 ? ${entries.length - 1}: current - 1`}
   @swiped-left={`current = ${entries.length} - current - 1 > 0 ? current + 1 : 0`}
 >
@@ -24,7 +26,7 @@ const entries = Object.entries(images)
         src={value()}
         alt="Преподаватель Para Bailar"
         x-show={`current == ${index}`}
-        class="object-cover w-full"
+        class="object-cover w-full max-w-screen-sm"
       />
     ))
   }
@@ -33,7 +35,7 @@ const entries = Object.entries(images)
     class="absolute right-0 w-1/3 h-full"></button>
 
   <div
-    class="absolute -bottom-10 flex gap-4 w-full flex justify-center items-center"
+    class="flex gap-4 w-full flex justify-center items-center"
   >
     {
       entries.map((_, index) => (
@@ -41,4 +43,20 @@ const entries = Object.entries(images)
       ))
     }
   </div>
+
+  { jsonData.map((item, index) => (
+  <div 
+    class="flex flex-col gap-8 text-center" 
+    x-show={`current === ${index}`}
+    x-effect={`console.log(current); console.log(${index})`}
+  >
+    <h2 class="text-red-800">{item.h2}</h2>
+    <h3>{item.h3}</h3>
+    <ul class="list-disc text-3xl px-16 text-left">
+      {item.list.map(listItem => (
+      <li>{listItem}</li>
+      ))}
+    </ul>
+  </div>))}
+</section>
 </section>
