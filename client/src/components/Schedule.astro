@@ -1,100 +1,99 @@
-<section>
-  <img src="" alt="" />
-  <p class="text-lg">Январь-май 2024 г.</p>
-  <div class="flex gap-4">
-    <figure>
-      <h3 class="text-red-500 text-lg">Группы для начинающих</h3>
-      <img src="" alt="" />
-      <figcaption class="flex gap-2 flex-col">
-        <div class="flex flex-col gap-1">
-          <div class="flex-justify-between">
-            <p>ПН, ЧТ</p>
-            <p>20:00-21:30</p>
-          </div>
+---
+import { Image } from "astro:assets"
+
+import startersImage from "@/assets/schedule/1.png"
+import basicImage from "@/assets/schedule/2.png"
+import middleImage from "@/assets/schedule/3.png"
+import advancedImage from "@/assets/schedule/4.png"
+---
+
+<section class="flex flex-col gap-8">
+  <h1 class="text-5xl">Расписание занятий</h1>
+  <p class="text-5xl">Январь-май 2024 г.</p>
+  <div class="flex flex-col gap-16">
+    <figure class="grid grid-cols-2 gap-4">
+      <h3 class="text-red-700 text-4xl col-span-2 font-semibold">
+        Группы для начинающих
+      </h3>
+      <Image src={startersImage} alt="starters schedule" />
+      <figcaption class="flex gap-4 flex-col text-3xl">
+        <div class="flex-justify-between">
+          <span class="font-bold">ПН, ЧТ</span>
+          <span>20:00-21:30</span>
+          <p>Фламенко для начинающих</p>
+          <p>Наталья Корнет</p>
         </div>
-        <div class="flex flex-col gap-1">
-          <div class="flex-justify-between">
-            <p>ПН, ЧТ</p>
-            <p>20:00-21:30</p>
-          </div>
+        <div class="flex-justify-between">
+          <span class="font-bold">ПН, ЧТ</span>
+          <span>18:30-20:00</span>
+          <p>Группа Inicio</p>
+          <p>Наталья Корнет</p>
         </div>
-        <div class="flex flex-col gap-1">
-          <div class="flex-justify-between">
-            <p>ПН, ЧТ</p>
-            <p>20:00-21:30</p>
-          </div>
-        </div>
-      </figcaption>
-    </figure>
-    <figure>
-      <h3 class="text-red-500 text-lg">Группы для начинающих</h3>
-      <img src="" alt="" />
-      <figcaption class="flex gap-2 flex-col">
-        <div class="flex flex-col gap-1">
-          <div class="flex-justify-between">
-            <p>ПН, ЧТ</p>
-            <p>20:00-21:30</p>
-          </div>
-        </div>
-        <div class="flex flex-col gap-1">
-          <div class="flex-justify-between">
-            <p>ПН, ЧТ</p>
-            <p>20:00-21:30</p>
-          </div>
-        </div>
-        <div class="flex flex-col gap-1">
-          <div class="flex-justify-between">
-            <p>ПН, ЧТ</p>
-            <p>20:00-21:30</p>
-          </div>
+        <div class="flex-justify-between">
+          <span class="font-bold uppercase">Вт, пт</span>
+          <span>15:00-16:30</span>
+          <p>Группа Inicio Дневная</p>
+          <p>Инна Ботова</p>
         </div>
       </figcaption>
     </figure>
-    <figure>
-      <h3 class="text-red-500 text-lg">Группы для начинающих</h3>
-      <img src="" alt="" />
-      <figcaption class="flex gap-2 flex-col">
-        <div class="flex flex-col gap-1">
-          <div class="flex-justify-between">
-            <p>ПН, ЧТ</p>
-            <p>20:00-21:30</p>
-          </div>
+    <figure class="grid grid-cols-2 gap-4">
+      <h3 class="text-red-700 text-4xl col-span-2 font-semibold">
+        Базовый уровень
+      </h3>
+      <Image src={basicImage} alt="starters schedule" />
+      <figcaption class="flex gap-4 flex-col text-3xl">
+        <div class="flex-justify-between">
+          <span class="font-bold">ПН, ЧТ</span>
+          <span>18:30-20:00</span>
+          <p>Группа Basico-1</p>
+          <p>Екатерина Егорова</p>
         </div>
-        <div class="flex flex-col gap-1">
-          <div class="flex-justify-between">
-            <p>ПН, ЧТ</p>
-            <p>20:00-21:30</p>
-          </div>
+        <div class="flex-justify-between">
+          <span class="font-bold">ПН, ЧТ</span>
+          <span>20:00-21:30</span>
+          <p>Группа Basico-2</p>
+          <p>Нина Вольф</p>
         </div>
-        <div class="flex flex-col gap-1">
-          <div class="flex-justify-between">
-            <p>ПН, ЧТ</p>
-            <p>20:00-21:30</p>
-          </div>
+        <div class="flex-justify-between">
+          <span class="font-bold uppercase">вс</span>
+          <span>11:00-12:30</span>
+          <p>Продолжающие с опытом от 1 года</p>
+          <p>Екатерина Егорова</p>
         </div>
       </figcaption>
     </figure>
-    <figure>
-      <h3 class="text-red-500 text-lg">Группы для начинающих</h3>
-      <img src="" alt="" />
-      <figcaption class="flex gap-2 flex-col">
-        <div class="flex flex-col gap-1">
-          <div class="flex-justify-between">
-            <p>ПН, ЧТ</p>
-            <p>20:00-21:30</p>
-          </div>
+    <figure class="grid grid-cols-2 gap-4">
+      <h3 class="text-red-700 text-4xl col-span-2 font-semibold">
+        Средний и высокий уровень
+      </h3>
+      <Image src={middleImage} alt="starters schedule" />
+      <figcaption class="flex gap-4 flex-col text-3xl">
+        <div class="flex-justify-between">
+          <span class="font-bold">ВТ, ПТ</span>
+          <span>19:00-20:30</span>
+          <p>Группа Medio</p>
+          <p>Анастасия Гаммершмидт</p>
         </div>
-        <div class="flex flex-col gap-1">
-          <div class="flex-justify-between">
-            <p>ПН, ЧТ</p>
-            <p>20:00-21:30</p>
-          </div>
+        <div class="flex-justify-between">
+          <span class="font-bold uppercase">Вт, пт</span>
+          <span>18:00-19:00</span>
+          <p>Группа Alto</p>
+          <p>Анастасия Гаммершмидт</p>
         </div>
-        <div class="flex flex-col gap-1">
-          <div class="flex-justify-between">
-            <p>ПН, ЧТ</p>
-            <p>20:00-21:30</p>
-          </div>
+      </figcaption>
+    </figure>
+    <figure class="grid grid-cols-2 gap-4">
+      <h3 class="text-red-700 text-4xl col-span-2 font-semibold">
+        Техника фламенко
+      </h3>
+      <Image src={advancedImage} alt="starters schedule" />
+      <figcaption class="flex gap-4 flex-col text-3xl">
+        <div class="flex-justify-between">
+          <span class="font-bold uppercase">Ср</span>
+          <span>18:30-20:00</span>
+          <p>Техника Фламенко</p>
+          <p>Наталья Корнет</p>
         </div>
       </figcaption>
     </figure>
