@@ -48,6 +48,7 @@ const entries = Object.entries(images)
   <div 
     class="flex flex-col gap-8 text-center" 
     x-show={`current === ${index}`}
+    x-transition
   >
     <h2 class="text-red-800">{item.h2}</h2>
     <h3>{item.h3}</h3>
