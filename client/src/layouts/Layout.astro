@@ -22,9 +22,15 @@ const { title } = Astro.props
 
     <title>{title}</title>
   </head>
-  <body class="w-full flex flex-col justify-center items-center gap-4">
+  <body x-cloak class="w-full flex flex-col justify-center items-center gap-4">
     <slot />
   </body>
+  <script>
+    document.addEventListener("htmx:load", () => {
+      const el = document.querySelector("[x-cloak]")
+      el?.removeAttribute("x-cloak")
+    })
+  </script>
 </html>
 <style>
   html {
@@ -39,5 +45,9 @@ const { title } = Astro.props
     font-family: "SixHandsChalk";
     src: url("../assets/SixHandsChalk.ttf");
     font-display: swap;
+  }
+
+  [x-cloak] {
+    display: none !important;
   }
 </style>
