@@ -18,7 +18,7 @@ import Layout from "@/layouts/Layout.astro"
 <Layout title="Школа ParaBailar — обучение фламенко в Новосибирске">
   <Header />
   <main
-    class="w-full px-4 py-2 flex flex-col items-center justify-center gap-16"
+    class="w-full px-4 py-2 flex flex-col items-center justify-center gap-32"
   >
     <About />
     <Why />
@@ -26,8 +26,8 @@ import Layout from "@/layouts/Layout.astro"
     <Teachers />
     <Gallery />
     <Schedule />
-    <News />
     <Pricing />
+    <News />
     <Reviews />
   </main>
   <Form />
@@ -36,3 +36,12 @@ import Layout from "@/layouts/Layout.astro"
   </main>
   <Footer />
 </Layout>
+
+<style is:global>
+  h1 {
+    font-family: "SixHandsChalk", cursive;
+  }
+  * {
+    font-family: "Inter", sans-serif;
+  }
+</style>
