@@ -1,61 +1,56 @@
-<section>
-  <img src="" alt="" />
-  <div class="flex-flex-col gap-2">
-    <h3 class="text-lg text-black font-bold">
-      НИКОГДА НЕ ЗАНИМАЛАСЬ ТАНЦАМИ, ПОЛУЧИТСЯ ЛИ У МЕНЯ?
-    </h3>
-    <p class="text-black-800">
-      Конечно, все движения и постановки корпуса очень естественны. В этом и
-      состоит прелесть и колорит этого танца.
-    </p>
-    <p></p>
-  </div>
-  <div class="flex-flex-col gap-2">
-    <h3 class="text-lg text-black font-bold">
-      НИКОГДА НЕ ЗАНИМАЛАСЬ ТАНЦАМИ, ПОЛУЧИТСЯ ЛИ У МЕНЯ?
-    </h3>
-    <p class="text-black-800">
-      Конечно, все движения и постановки корпуса очень естественны. В этом и
-      состоит прелесть и колорит этого танца.
-    </p>
-    <p></p>
-  </div>
-  <div class="flex-flex-col gap-2">
-    <h3 class="text-lg text-black font-bold">
-      НИКОГДА НЕ ЗАНИМАЛАСЬ ТАНЦАМИ, ПОЛУЧИТСЯ ЛИ У МЕНЯ?
-    </h3>
-    <p class="text-black-800">
-      Конечно, все движения и постановки корпуса очень естественны. В этом и
-      состоит прелесть и колорит этого танца.
-    </p>
-    <p></p>
-  </div>
-  <div class="flex-flex-col gap-2">
-    <h3 class="text-lg text-black font-bold">
-      НИКОГДА НЕ ЗАНИМАЛАСЬ ТАНЦАМИ, ПОЛУЧИТСЯ ЛИ У МЕНЯ?
-    </h3>
-    <p class="text-black-800">
-      Конечно, все движения и постановки корпуса очень естественны. В этом и
-      состоит прелесть и колорит этого танца.
-    </p>
-    <p></p>
-  </div>
-  <div class="flex-flex-col gap-2">
-    <h3 class="text-lg text-black font-bold">
-      НИКОГДА НЕ ЗАНИМАЛАСЬ ТАНЦАМИ, ПОЛУЧИТСЯ ЛИ У МЕНЯ?
-    </h3>
-    <p class="text-black-800">
-      Конечно, все движения и постановки корпуса очень естественны. В этом и
-      состоит прелесть и колорит этого танца.
-    </p>
-    <p></p>
-  </div>
+---
+import data from "@/assets/faq.json"
+---
+
+<section class="flex flex-col gap-8">
+  <h1 class="text-5xl">Частые вопросы</h1>
+  {
+    data.map(([question, answer], index) => (
+      <>
+        <div
+          @click="shown = !shown"
+          class="flex-flex-col gap-2"
+          x-data="{shown: false}"
+        >
+          <h3 class="text-lg text-black font-bold flex justify-between">
+            {question}
+
+            <svg
+              x-show="!shown"
+              width="27"
+              height="16"
+              viewBox="0 0 27 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M26 1.25L13.5 13.75L1 1.25"
+                stroke="#828282"
+                stroke-width="2"
+              />
+            </svg>
+
+            <svg
+              x-show="shown"
+              width="27"
+              height="16"
+              viewBox="0 0 27 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 14.75L13.5 2.25L26 14.75"
+                stroke="#828282"
+                stroke-width="2"
+              />
+            </svg>
+          </h3>
+          <p x-transition x-show="shown" class="text-black-800">
+            {answer}
+          </p>
+        </div>
+        <hr />
+      </>
+    ))
+  }
 </section>
-<style>
-  section > div {
-    border-top: solid 0.2rem black;
-  }
-  section > div:last-child {
-    border-bottom: solid 0.2rem black;
-  }
-</style>
