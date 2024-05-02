@@ -3,7 +3,7 @@
   "include": ["**/*.ts", "**/*.js", "**/*.astro"],
   "compilerOptions": {
     "moduleDetection": "auto",
-    "moduleResolution": "NodeNext",
+    // "moduleResolution": "NodeNext",
     "baseUrl": "./",
     "allowJs": true,
     "checkJs": true,

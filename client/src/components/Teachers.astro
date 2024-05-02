@@ -11,7 +11,9 @@ const entries = Object.entries(images)
   import "node_modules/swiped-events/dist/swiped-events.min.js"
 </script>
 
-<section
+<section class="flex flex-col gap-4">
+  <h1 class="text-5xl">Наши преподаватели</h1>
+<div
   x-data="{current: 0}"
   class="text-5xl flex flex-col gap-10 justify-around items-center relative w-full"
   @swiped-right={`current = current <= 0 ? ${entries.length - 1}: current - 1`}
@@ -58,5 +60,5 @@ const entries = Object.entries(images)
       ))}
     </ul>
   </div>))}
-</section>
+</div>
 </section>
