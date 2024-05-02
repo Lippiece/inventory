@@ -1,20 +1,90 @@
-<section>
-  <header class="flex justify-between">
-    <img src="" alt="" />
-    <div class="flex-gap-4">
-      <!-- TODO: Left/right -->
+---
+import { Image } from "astro:assets"
+
+import data from "@/assets/reviews.json"
+
+const images = import.meta.glob("@/assets/reviews/*")
+const values = Object.values(images)
+---
+
+<section class="flex flex-col gap-4 w-full px-12" x-data="{current:0}">
+  <div class="flex justify-between">
+    <h1 class="text-5xl">Новости</h1>
+    <div class="flex gap-4">
+      <span
+        @click={`current = current <= 0 ? ${values.length - 1}: current - 1`}
+      >
+        <svg
+          width="30"
+          height="40"
+          viewBox="0 0 16 27"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.75 26L2.25 13.5L14.75 1"
+            stroke="#828282"
+            stroke-width="2"></path>
+        </svg>
+      </span>
+      <span
+        @click={`current = ${values.length} - current - 1 > 0 ? current + 1 : 0`}
+      >
+        <svg
+          width="30"
+          height="40"
+          viewBox="0 0 16 27"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1.25 0.727539L13.75 13.2275L1.25 25.7275"
+            stroke="#828282"
+            stroke-width="2"></path>
+        </svg>
+      </span>
     </div>
-  </header>
-  <!--TODO: reviews gallery-->
-  <figure class="bg-gray-300 p-4">
-    <img src="" alt="" />
-    <figcaption>
-      <h3 class="text-black font-bold text-lg">Юлия</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam earum
-        voluptatum aliquam maxime quibusdam et? Expedita, quasi qui atque illo
-        hic nulla illum! Eos quae libero ipsam aut sed doloremque!
-      </p>
-    </figcaption>
-  </figure>
+  </div>
+  <div class="flex flex-col items-center md:hidden">
+    {
+      data.map(([name, text], index) => (
+        <figure
+          class="flex flex-col gap-2 bg-gray-100 rounded-2xl md:flex-row"
+          x-show={`current===${index}`}
+          x-transition
+        >
+          <Image src={values[index]()} alt="" class="size-36 rounded-full" />
+          <figcaption class="flex flex-col justify-around items-left p-2">
+            <div class="flex flex-col gap-2">
+              <h3 class="text-xl font-bold">{name}</h3>
+            </div>
+            <div class="flex flex-col gap-1">
+              <p>{text}</p>
+            </div>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+  <div class="items-start hidden md:flex flex-col gap-16">
+    {
+      data.map(([name, text], index) => (
+        <figure
+          class="flex gap-2 bg-gray-100 rounded-2xl w-full"
+          x-show={`current===${index} || current===${index - 1}`}
+          x-transition
+        >
+          <Image src={values[index]()} alt="" class="size-36 rounded-full" />
+          <figcaption class="flex flex-col justify-around items-left p-2">
+            <div class="flex flex-col gap-2">
+              <h3 class="text-xl font-bold">{name}</h3>
+            </div>
+            <div class="flex flex-col gap-1">
+              <p>{text}</p>
+            </div>
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
 </section>

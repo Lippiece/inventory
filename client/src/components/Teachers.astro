@@ -15,7 +15,7 @@ const entries = Object.entries(images)
   <h1 class="text-5xl">Наши преподаватели</h1>
 <div
   x-data="{current: 0}"
-  class="text-5xl flex flex-col gap-10 justify-around items-center relative w-full"
+  class="text-4xl flex flex-col gap-10 justify-around items-center relative w-full"
   @swiped-right={`current = current <= 0 ? ${entries.length - 1}: current - 1`}
   @swiped-left={`current = ${entries.length} - current - 1 > 0 ? current + 1 : 0`}
 >
