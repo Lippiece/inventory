@@ -1,7 +1,7 @@
 import { Hono } from "hono"
 
 import lessons from "./lessons"
-import services from "./services"
+import servicesRouter from "./services"
 
 const api = new Hono()
 
@@ -14,6 +14,6 @@ api
 
 // Lessons
 api.route("/lessons", lessons)
-api.route("/services", services)
+api.route("/services", servicesRouter)
 
 export default api

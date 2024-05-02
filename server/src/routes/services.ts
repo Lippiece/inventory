@@ -1,12 +1,12 @@
 import { vValidator } from "@hono/valibot-validator"
 import { Hono } from "hono"
-import { isValidObjectId } from "mongoose"
 
 import serviceAddSchema from "@/constants/service/serviceAddSchema"
 import servicePutSchema from "@/constants/service/servicePutSchema"
 import Service from "@/models/Service"
 import ServiceJSX from "@/views/service/Service"
 import ServiceList from "@/views/service/ServiceList"
+import validateId from "@/functions/validateId"
 
 const servicesRouter = new Hono()
 
@@ -19,13 +19,7 @@ export const servicesRoutes = servicesRouter
   .get(
     "/:id",
 
-    context => {
-      const id = context.req.param("id")
-
-      if (!isValidObjectId(id)) {
-        return context.text("Invalid ID", 400)
-      }
-    },
+    validateId,
 
     async context => {
       const id = context.req.param("id")

@@ -6,7 +6,7 @@ import mongoose from "mongoose"
 
 import Lesson, { ILesson } from "@/models/Lesson"
 import Service from "@/models/Service"
-import { servicesRoutes } from "@/routes/services"
+import { servicesRouter } from "@/routes/services"
 import ServiceJSX from "@/views/service/Service"
 import ServiceList from "@/views/service/ServiceList"
 
@@ -30,7 +30,7 @@ const getNewLesson      = (number: number) => new Lesson(getNewLessonData(number
 const lessons           = [1, 2, 3].map(getNewLesson)
 
 describe("lesson controllers", () => {
-  const client = testClient(servicesRoutes)
+  const client = testClient(servicesRouter)
 
   beforeAll(async () => {
     await mongoose.connection.dropCollection("lessons")

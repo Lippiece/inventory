@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun --hot src/index.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.11.1",
+    "@hono/valibot-validator": "^0.2.2",
+    "dotenv": "latest",
+    "fp-ts": "^2.16.2",
+    "hono": "latest",
+    "mongoose": "latest",
+    "valibot": "^0.29.0"
+  },
+  "devDependencies": {
+    "@happy-dom/global-registrator": "^13.5.0",
+    "eslint-config-adjunct": "^4.13.0"
+  }
+}
