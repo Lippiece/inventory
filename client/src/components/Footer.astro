@@ -1,7 +1,16 @@
-<figure class="w-full px-12 py-8 flex gap-8 justify-around">
+---
+import { Image } from "astro:assets"
+
+import logo from "@/assets/paraBailar.png"
+---
+
+<figure
+  class="w-full px-12 py-8 flex gap-8 justify-around bg-[#144225] text-white"
+>
+  ;
   <div class="flex items-left flex-col gap-4 items-left">
-    <img src="" alt="" />
-    <p class="flex">
+    <Image src={logo} alt="Para Bailar" />
+    <p class="flex gap-2 font-bold">
       <svg
         width="22"
         height="19"
@@ -28,6 +37,7 @@
       <span>ОГРН 319547600006116</span>
     </p>
     <div class="flex gap-4">VK TG WU</div>
+    <!-- TODO: Socials -->
   </div>
   <img src="" alt="" />
 </figure>
