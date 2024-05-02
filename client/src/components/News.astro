@@ -45,15 +45,17 @@ const values = Object.values(images)
       </span>
     </div>
   </div>
-  <div class="h-[80vh] md:h-[35vh] relative">
+  <div
+    class="h-[80vh] md:h-[35vh] xl:h-[25vh] relative flex flex-col items-center"
+  >
     {
       data.map(([date, h3, p1, p2], index) => (
         <figure
-          class="flex flex-col md:h-[35vh] gap-2 bg-gray-100 rounded-2xl md:flex-row absolute"
+          class="flex flex-col md:h-[35vh] xl:h-full gap-2 bg-gray-100 rounded-2xl md:flex-row absolute"
           x-show={`current===${index}`}
           x-transition
         >
-          <Image src={values[index]()} alt="" />
+          <Image src={values[index]()} alt="" class="w-auto" />
           <figcaption class="flex flex-col justify-evenly items-left p-2">
             <div class="flex flex-col gap-2">
               <p class="text-lg text-black">{date}</p>
