@@ -22,9 +22,9 @@ export const telegramRoutes = telegramRouter
   }),
   async context => {
     const { CHAT_ID } = process.env
-    const formData = await context.req.formData()
-    const name        = formData.get("name")
-    const phone       = formData.get("phone")
+    const formData = context.req.valid("form")
+    const name        = formData.name
+    const phone       = formData.phone
     const text        = `Имя: ${name}%0AНомер: ${phone}`
     const response    = await fetch(
       `https://api.telegram.org/${TELEGRAM_BOT}/sendMessage?chat_id=${CHAT_ID}&text=${text}`,
