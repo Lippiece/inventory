@@ -2,6 +2,7 @@ import { Hono } from "hono"
 
 import lessons from "./lessons"
 import services from "./services"
+import telegramRouter from "./telegram"
 
 const api = new Hono()
 
@@ -13,7 +14,9 @@ api
   .get("/health", context => context.text("Everything works!"))
 
 // Lessons
-api.route("/lessons", lessons)
-api.route("/services", services)
+api
+  .route("/lessons", lessons)
+  .route("/services", services)
+  .route("/telegram", telegramRouter)
 
 export default api
