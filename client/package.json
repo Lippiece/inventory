@@ -10,14 +10,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@alpinejs/mask": "^3.13.5",
+    "@alpinejs/mask": "^3.13.10",
     "@astrojs/alpinejs": "^0.4.0",
     "@astrojs/check": "^0.5.0",
     "@astrojs/node": "^8.2.5",
     "@astrojs/tailwind": "^5.1.0",
     "alpinejs": "^3.13.5",
     "astro": "^4.3.5",
-    "htmx.org": "^1.9.10",
+    "astro-htmx": "^1.0.5",
+    "htmx.org": "^1.9.12",
     "swiped-events": "^1.1.9",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.3.3"

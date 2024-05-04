@@ -7,7 +7,7 @@ const images = import.meta.glob("@/assets/news/*")
 const values = Object.values(images)
 ---
 
-<section class="flex flex-col gap-4 w-full px-8" x-data="{current:0}" id="news">
+<section class="flex flex-col gap-4 w-full px-8 container" x-data="{current:0}" id="news">
   <div class="flex justify-between">
     <h1 class="text-5xl">Новости</h1>
     <div class="flex gap-4">
@@ -71,7 +71,7 @@ const values = Object.values(images)
       ))
     }
   </div>
-  <div class="h-[80vh] md:h-[35vh] xl:h-[25vh] hidden lg:flex items-stretch">
+  <div class="h-[80vh] md:h-[35vh] xl:h-[25vh] hidden lg:flex items-stretch gap-8">
     {
       data.map(([date, h3, p1, p2], index) => (
         <figure

@@ -1,21 +1,33 @@
 <form
-  action=""
+  id="form"
+  hx-post="/api/telegram/sendMessage"
   class="h-[55vh] md:h-[40vh] lg:h-[30vh] w-full bg-slate-500 px-12 py-8 flex flex-col gap-4 items-start justify-center"
 >
   <h2 class="text-4xl text-white font-bold">Готовы танцевать?</h2>
   <p class="text-2xl text-white">Пробный урок для начинающих за 300 руб</p>
-  <input
-    name="name"
-    type="text"
-    placeholder="Имя"
-    class="rounded-3xl text-gray-800 px-4 py-2"
-  />
-  <input
-    name="phone"
-    type="number"
-    placeholder="Телефон"
-    class="rounded-3xl text-gray-800 px-4 py-2"
-  />
+  <label for="name" class="text-white flex flex-col">
+    Имя
+    <input
+      required
+      name="name"
+      id="name"
+      minlength="2"
+      placeholder="Жанна"
+      class="rounded-3xl text-gray-800 px-4 py-2"
+    />
+  </label>
+  <label for="phone" class="text-white flex flex-col">
+    Телефон
+    <input
+      required
+      name="phone"
+      minlength="10"
+      placeholder="+7-999-999-99-99"
+      class="rounded-3xl text-gray-800 px-4 py-2"
+      x-data
+      x-mask="+7-999-999-99-99"
+    />
+  </label>
   <button class="mt-2 bg-red-300 text-center px-4 py-2 rounded-3xl"
     >Оставить заявку</button
   >
