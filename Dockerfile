@@ -15,18 +15,19 @@ RUN bun install
 
 FROM base AS release
 WORKDIR /app
-COPY . .
+RUN mkdir -p server && mkdir -p client
+COPY server/ /app/server
 COPY --from=install /temp/server/node_modules /app/server/node_modules
+COPY client/ /app/client
 COPY --from=install /temp/client/node_modules /app/client/node_modules
 
-FROM base AS build
+FROM release AS build
 WORKDIR /app/client
 RUN bun run build
 
 WORKDIR /app/server
-RUN ls -la 
 
 EXPOSE 3000
-USER bun
+
 CMD ["bun", "src/index.ts"]
 
