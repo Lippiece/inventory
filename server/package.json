@@ -3,7 +3,8 @@
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
-    "start": "bun --hot src/index.ts"
+    "dev": "bun --hot src/index.ts",
+    "start": "bun src/index.ts"
   },
   "dependencies": {
     "@hono/valibot-validator": "^0.2.2",
