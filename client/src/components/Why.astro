@@ -1,41 +1,50 @@
 ---
 import { Image } from "astro:assets"
 
-import why from "../assets/why.png"
+import why2 from "../assets/why/2.png"
+import why3 from "../assets/why/3.png"
+import why4 from "../assets/why/4.png"
+import why from "../assets/why/why.png"
 ---
 
 <section class="container p-8">
   <h1 class="text-6xl mb-4">Зачем танцевать фламенко?</h1>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-3xl">
-    <Image
-      src={why}
-      alt="Девушки танцуют фламенко"
-      class="h-full row-span-2 object-cover"
-    />
-    <article class="rounded-lg">
-      <h2 class="text-4xl text-rose-700 font-bold mb-2">
-        Эмоциональная разгрузка
-      </h2>
-      <p class="text-gray-700">
-        Через танец есть возможность выплеснуть эмоции, которые не всегда можно
-        выразить в повседневной жизни
-      </p>
-    </article>
-    <article class="rounded-lg">
-      <h2 class="text-4xl text-rose-700 font-bold mb-2">Красивое тело</h2>
-      <p class="text-gray-700">
-        Атмосферное творческое пространство в центре Новосибирска с собственным
-        театром
-      </p>
-    </article>
-    <article class="rounded-lg">
-      <h2 class="text-4xl text-rose-700 font-bold mb-2">Любовь к себе</h2>
-      <p class="text-gray-700">
-        Фламенко дает возможность узнать и принять себя разную: непредсказуемую,
-        дерзкую, уверенную
-      </p>
-    </article>
-    <article class="rounded-lg">
+    <figure class="rounded-lg">
+      <Image src={why} alt="Девушки танцуют фламенко" />
+      <figcaption>
+        <h2 class="text-4xl text-rose-700 font-bold mb-2">
+          Эмоциональная разгрузка
+        </h2>
+        <p class="text-gray-700">
+          Через танец есть возможность выплеснуть эмоции, которые не всегда
+          можно выразить в повседневной жизни
+        </p>
+      </figcaption>
+    </figure>
+    <figure class="rounded-lg">
+      <Image src={why2} alt="Девушки танцуют фламенко" />
+      <figcaption>
+        <h2 class="text-4xl text-rose-700 font-bold mb-2">Красивое тело</h2>
+        <p class="text-gray-700">
+          В танце формируется красивая осанка, улучшается гибкость и
+          координация, укрепляется мышечный корсет
+        </p>
+      </figcaption>
+    </figure>
+    <figure class="rounded-lg">
+      <Image src={why3} alt="Девушки танцуют фламенко" />
+      <figcaption>
+        <h2 class="text-4xl text-rose-700 font-bold mb-2">Любовь к себе</h2>
+        <p class="text-gray-700">
+          Фламенко дает возможность узнать и принять себя разную:
+          непредсказуемую, дерзкую, уверенную
+        </p>
+      </figcaption>
+    </figure>
+    <figure class="rounded-lg">
+      <Image src={why4} alt="Девушки танцуют фламенко" />
+      <figcaption>
       <h2 class="text-4xl text-rose-700 font-bold mb-2">
         Возможность похудеть
       </h2>
@@ -43,12 +52,7 @@ import why from "../assets/why.png"
         Благодаря регулярности физической нагрузки и укреплению групп мышц, вес
         уходит, а тело подтягивается
       </p>
-    </article>
+      </figcaption>
+    </figure>
   </div>
 </section>
-
-<style>
-  h1 {
-    font-family: "SixHandsChalk", cursive;
-  }
-</style>
